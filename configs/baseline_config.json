@@ -1,0 +1,27 @@
+{
+  "model_name": "meta-llama/Llama-2-7b-hf",
+  "batch_size": 1,
+  "max_context_length": 4096,
+  "quantization_config": {
+    "load_in_8bit": false,
+    "load_in_4bit": false
+  },
+  "device": "auto",
+  "torch_dtype": "float16",
+  "trust_remote_code": true,
+  "use_cache": true,
+  "do_sample": false,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 50,
+  "repetition_penalty": 1.0,
+  "max_new_tokens": 100,
+  "pad_token_id": null,
+  "eos_token_id": null,
+  "experiment_name": "baseline_inference",
+  "output_dir": "logs",
+  "log_level": "INFO",
+  "save_model": false,
+  "warmup_runs": 3,
+  "benchmark_runs": 10
+}

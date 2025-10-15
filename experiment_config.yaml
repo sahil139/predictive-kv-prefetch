@@ -1,0 +1,38 @@
+# KV Cache Prefetch Experiment Configuration
+
+experiments:
+  - mode: baseline
+    model_name: "microsoft/DialoGPT-small"
+    context_lengths: [100, 500, 1000]
+    num_runs: 3
+    max_new_tokens: 50
+    batch_size: 1
+    quantization_config:
+      load_in_8bit: false
+      load_in_4bit: false
+
+  - mode: reactive
+    model_name: "microsoft/DialoGPT-small"
+    page_size: 128
+    max_gpu_pages: 8
+    context_lengths: [100, 500, 1000]
+    num_runs: 3
+    max_new_tokens: 50
+    batch_size: 1
+
+  - mode: predictive
+    model_name: "microsoft/DialoGPT-small"
+    page_size: 128
+    max_gpu_pages: 8
+    prefetch_k: 4
+    context_lengths: [100, 500, 1000]
+    num_runs: 3
+    max_new_tokens: 50
+    batch_size: 1
+
+# Global settings
+global_settings:
+  output_dir: "logs"
+  generate_plots: true
+  verbose_logging: true
+  save_detailed_metrics: true

@@ -1,0 +1,61 @@
+{
+  "predictive_prefetch_config": {
+    "page_size": 256,
+    "prefetch_window": 3,
+    "max_prefetch_pages": 5,
+    "confidence_threshold": 0.3,
+    "enable_async": true,
+    "max_concurrent_transfers": 4
+  },
+  "attention_analysis_config": {
+    "window_size": 10,
+    "decay_factor": 0.9,
+    "look_ahead_pages": 3,
+    "min_confidence": 0.1
+  },
+  "async_transfer_config": {
+    "use_cuda_streams": true,
+    "non_blocking_transfers": true,
+    "stream_synchronization": "on_demand",
+    "transfer_timeout_ms": 1000
+  },
+  "prediction_config": {
+    "prediction_methods": ["attention_weight", "access_frequency", "temporal_locality"],
+    "weight_attention": 0.6,
+    "weight_frequency": 0.3,
+    "weight_locality": 0.1,
+    "adaptive_threshold": true
+  },
+  "metrics_config": {
+    "track_prediction_accuracy": true,
+    "track_prefetch_efficiency": true,
+    "track_memory_usage": true,
+    "track_stall_times": true,
+    "detailed_logging": true
+  },
+  "experiment_config": {
+    "test_scenarios": [
+      "sequential_access",
+      "random_access", 
+      "locality_access",
+      "mixed_access"
+    ],
+    "memory_pressure_tests": [4, 8, 16, 32],
+    "confidence_thresholds": [0.1, 0.3, 0.5, 0.7],
+    "prefetch_windows": [1, 2, 3, 5]
+  },
+  "performance_config": {
+    "warmup_runs": 3,
+    "benchmark_runs": 10,
+    "measure_overhead": true,
+    "measure_efficiency": true,
+    "compare_strategies": true
+  },
+  "output_config": {
+    "output_dir": "logs",
+    "metrics_file": "predictive_prefetch_metrics.json",
+    "detailed_logs": true,
+    "save_prediction_history": true,
+    "export_comparison_data": true
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "cache_config": {
+    "page_size": 256,
+    "max_gpu_pages": 16,
+    "dtype": "float16",
+    "enable_metrics": true
+  },
+  "model_config": {
+    "model_name": "meta-llama/Llama-2-7b-hf",
+    "num_layers": 32,
+    "num_heads": 32,
+    "head_dim": 128,
+    "hidden_dim": 4096
+  },
+  "experiment_config": {
+    "batch_size": 1,
+    "max_context_length": 4096,
+    "max_new_tokens": 100,
+    "test_input_lengths": [100, 500, 1000, 2000],
+    "test_max_new_tokens": [20, 50, 100, 200]
+  },
+  "eviction_policy": {
+    "type": "LRU",
+    "prefetch_threshold": 0.8,
+    "eviction_batch_size": 1
+  },
+  "performance_config": {
+    "warmup_runs": 3,
+    "benchmark_runs": 10,
+    "measure_stall_time": true,
+    "measure_memory_usage": true,
+    "measure_cache_efficiency": true
+  },
+  "output_config": {
+    "output_dir": "logs",
+    "metrics_file": "paged_kv_metrics.json",
+    "detailed_logs": true,
+    "save_cache_state": false
+  }
+}

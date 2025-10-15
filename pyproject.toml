@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kv-cache-prefetch"
+version = "1.0.0"
+description = "Experiments for evaluating KV cache management strategies in transformer models"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "KV Cache Prefetch Experiments"}
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "torch>=2.0.0",
+    "transformers>=4.30.0",
+    "tokenizers>=0.13.0",
+    "accelerate>=0.20.0",
+    "bitsandbytes>=0.39.0",
+    "psutil>=5.9.0",
+    "numpy>=1.24.0",
+    "pandas>=2.0.0",
+    "matplotlib>=3.7.0",
+    "seaborn>=0.12.0",
+    "pyyaml>=6.0",
+    "tqdm>=4.65.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+]
+
+[project.scripts]
+kv-cache-experiments = "main:main"
+
+[tool.setuptools.packages.find]
+include = ["*"]
+
+[tool.setuptools.package-data]
+"*" = ["configs/*.json", "*.yaml"]
